@@ -8,6 +8,7 @@ import java.awt.Panel;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -77,7 +78,7 @@ public class MenuPrincipal extends JFrame {
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblCopyR = new JLabel("Desenvolvido por Fulanita de Tal © 2022");
+		JLabel lblCopyR = new JLabel("Desenvolvido por Augusto Ribeiro © 2022");
 		lblCopyR.setBounds(315, 11, 301, 19);
 		lblCopyR.setForeground(new Color(240, 248, 255));
 		lblCopyR.setFont(new Font("Roboto", Font.PLAIN, 16));
@@ -107,9 +108,10 @@ public class MenuPrincipal extends JFrame {
 		JPanel btnexit = new JPanel();
 		btnexit.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+			public void mouseClicked(MouseEvent e) {		
+				sair();
 			}
+			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				btnexit.setBackground(Color.red);
@@ -132,6 +134,7 @@ public class MenuPrincipal extends JFrame {
 		btnexit.add(labelExit);
 		labelExit.setHorizontalAlignment(SwingConstants.CENTER);
 		labelExit.setFont(new Font("Roboto", Font.PLAIN, 18));
+
 		
 		//Botón Login
 		JPanel btnLogin = new JPanel(); 
@@ -162,6 +165,18 @@ public class MenuPrincipal extends JFrame {
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setForeground(SystemColor.textHighlight);
 		lblTitulo.setFont(new Font("Roboto Light", Font.PLAIN, 20));
+		
+	}
+	
+	private void sair() {
+		int aswer = JOptionPane.showOptionDialog(null, "Tem certeza que deseja sair?", "Aviso", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Sim", "Não"}, "Escolha");
+		
+		if(aswer == JOptionPane.YES_OPTION) {
+			
+			System.exit(0);
+		} else {
+			System.out.println("Continua");
+		}
 	}
 	
 	//Código que permite movimentar a janela pela tela seguindo a posição de "x" y "y"
@@ -175,3 +190,4 @@ public class MenuPrincipal extends JFrame {
         this.setLocation(x - xMouse, y - yMouse);
 }
 }
+
